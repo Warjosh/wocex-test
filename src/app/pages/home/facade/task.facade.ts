@@ -4,19 +4,17 @@ import { TaskState } from "../state/task.state";
 import { Task } from "app/core/classes/task";
 import { Router } from "@angular/router";
 
+declare var $: any;
 
 @Injectable({
     providedIn: 'root',
 })
+
 export class TaskFacade {
 
     constructor(
         private _taskState: TaskState,
         private _router: Router 
-        /* private _alertService: AlertService, */
-        
-        /* private _util: UtilFacade, */
-        /* private _loadingService: LoadingService */
     ) {
         this.setTasks([new Task("1", "tarea#1", "1", "Pending"), new Task("2", "tarea#2", "2", "Completed")]);
     }
@@ -42,7 +40,8 @@ export class TaskFacade {
     //#region Service
 
     /** 
-     * @param _user 
+     * @param _id 
+     * @param _task 
      */
     public addAndEditTask(id: string, task: Task): void{
         let aux = this.getTasksValue();
@@ -65,13 +64,38 @@ export class TaskFacade {
             task.id = (auxId).toString();
             aux.push(task);
             this.setTasks(aux);
-        
+            
+            $.notify({
+                icon: 'pe-7s-info',
+                message: 'Added task.',
+              }, {
+                type: 'success',
+                timer: 3000,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                }
+              });
+            
             } else {
                 aux.forEach(element => {
                     if (element.id == id ){
                         element = task;
                     }
                 });
+
+                $.notify({
+                    icon: 'pe-7s-info',
+                    message: 'Edited task.',
+                  }, {
+                    type: 'success',
+                    timer: 3000,
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    }
+                  });
+
                 this.setTasks(aux);
           }
 

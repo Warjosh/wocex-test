@@ -18,12 +18,12 @@ export class LoginPage implements OnInit {
   login: Object[] = [];
   usuarioForm = new FormGroup({});
 
-  constructor(  
+  constructor(
     private fb: FormBuilder,
-    private _loader: LoaderService, 
+    private _loader: LoaderService,
     private _router: Router) {
-    
-   }
+
+  }
 
   ngOnInit() {
 
@@ -33,19 +33,20 @@ export class LoginPage implements OnInit {
     });
   }
 
+
   public logIn(): void {
 
-    const user = new User (this.usuarioForm.value['correo'], this.usuarioForm.value['password']) 
+    const user = new User(this.usuarioForm.value['correo'], this.usuarioForm.value['password'])
 
-    if (user.email == 'admin@gmail.com' && user.password == '123456'){
+    if (user.email == 'admin@gmail.com' && user.password == '123456') {
 
       localStorage.setItem('token', JSON.stringify(user));
 
       this._loader.setLoading(true);
 
-      setTimeout(( )=>{ 
+      setTimeout(() => {
         this._loader.setLoading(false);
-        
+
         this._router.navigate(['/check-tasks']);
 
         $.notify({
@@ -55,14 +56,14 @@ export class LoginPage implements OnInit {
           type: 'success',
           timer: 3000,
           placement: {
-              from: 'top',
-              align: 'right'
+            from: 'top',
+            align: 'right'
           }
         });
       }, 3000);
 
-      
-      
+
+
     } else {
 
       $.notify({
@@ -72,8 +73,8 @@ export class LoginPage implements OnInit {
         type: 'danger',
         timer: 3000,
         placement: {
-            from: 'top',
-            align: 'right' 
+          from: 'top',
+          align: 'right'
         }
       });
     }

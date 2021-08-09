@@ -29,28 +29,28 @@ export class TaskState {
   }
   /**
    * 
-   * @returns 
+   * @returns _Observable<Task[]>
    */
   public geCurrentTasks(): Observable<Task[]> {
     return this._tasks$.asObservable();
   }
   /**
    * 
-   * @returns 
+   * @returns _Observable<Task>
    */
    public geCurrentTask(): Observable<Task> {
     return this._task$.asObservable();
   }
   /**
    * 
-   * @returns 
+   * @returns _Task[]
    */
   public getTasksValue(): Task[] {
     return this._tasks$.getValue();
   }
   /**
    * 
-   * @returns 
+   * @returns _Task
    */
    public getTaskValue(): Task {
     return this._task$.getValue();

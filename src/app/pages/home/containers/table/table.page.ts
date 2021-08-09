@@ -30,7 +30,7 @@ export class TablePage implements OnInit {
   }
 
   /*  */
-  public edit(id: string) {
+  public edit(id: string):void {
     let task: Task;
     
     task = this.tableData1.dataRows.filter(function (task) {
@@ -40,7 +40,7 @@ export class TablePage implements OnInit {
     this._taskFacade.setTask(task);
   }
   /*  */
-  public remove(id: string) {
+  public remove(id: string):void {
     this.tableData1.dataRows = this.tableData1.dataRows.filter(function (task) {
       return task.id != id;
     });

@@ -11,6 +11,8 @@ autenticar a un usuario (mostrar credenciales de demostración).
     + Marcar tarea como “Pendiente” o “Completada”.
     + Eliminar tarea.
 
+## TEMPLATE:
+--------------------------------------------------------------------------------------------------------------
 ## Links:
 
 + [Live Preview](https://demos.creative-tim.com/light-bootstrap-dashboard-angular2/dashboard)

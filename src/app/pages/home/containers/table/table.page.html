@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Tasks</h4>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">{{ tableData1.headerRow[0] }}</th>
+                                    <th>{{  tableData1.headerRow[1]  }}</th>
+                                    <th>{{  tableData1.headerRow[2] }}</th>
+                                    <th class="text-right">{{ tableData1.headerRow[3]  }}</th>
+                                    <th class="text-right">{{tableData1.headerRow[4]  }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-template [ngIf]="tableData1.dataRows.length >= 1" [ngIfElse]="ListEmpty">
+                                    <tr *ngFor="let row of tableData1.dataRows">
+                                        <td class="text-center">{{ row.id }}</td>
+                                        <td>{{ row.name }}</td>
+                                        <td><p class="overflow">{{row.description}}<p></td>
+                                        <td class="text-right">{{row.status }}</td>
+                                        <td class="td-actions text-right">
+                                            <a rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs">
+                                                <i class="fa fa-edit" [routerLink]="['/add-and-edit/',row.id]" (click)="edit(row.id)"></i>
+                                            </a>
+                                            <a  rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times" (click)="remove(row.id )"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template #ListEmpty>
+                                    <tr>
+                                        <td colspan=5 class="text-center">Empty list</td>
+                                    </tr>
+                                </ng-template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

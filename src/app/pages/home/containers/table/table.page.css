@@ -1,0 +1,6 @@
+.overflow{
+    max-width: 90px; 
+    display: block; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
